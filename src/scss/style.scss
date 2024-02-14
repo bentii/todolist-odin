@@ -1,0 +1,42 @@
+$background-color: rgb(104, 11, 11);
+* {
+  color: rgb(255, 255, 255);
+}
+.backgroundDiv {
+  background-color: $background-color;
+  position: relative;
+}
+div {
+  box-sizing: border-box;
+}
+.rowGap {
+  row-gap: 10px;
+}
+.menu {
+  cursor: pointer;
+  border: 1px solid white;
+}
+.add{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 3.5vw;
+    height: 3.5vw;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 40px;
+    max-height: 40px;
+    border: none;
+    background-color: $background-color;
+    font-size: 2em;
+    font-family: 'Courier New', Courier, monospace;
+}
+.edit{
+    cursor: pointer;
+}
+.delete{
+    cursor: pointer;
+}
+.modalBg{
+    background-color: $background-color !important;
+}

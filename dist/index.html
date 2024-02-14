@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap w/ Webpack</title>
+  <script defer src="script.js"></script><link href="main.css" rel="stylesheet"></head>
+  <body class="bg-dark p-5">
+    <div
+      class="backgroundDiv container py-4 px-3 mx-auto rounded d-flex text-center border"
+    >
+      <div class="rowGap col-2 d-flex flex-column p-3 rounded-start border">
+        <div class="menu">All</div>
+        <div class="menu">Today</div>
+        <div class="menu">Week</div>
+        <div class="menu">Month</div>
+        <div class="menu">Projects</div>
+        <div class="menu">Notes</div>
+      </div>
+      <div id='container' class="rowGap d-flex flex-column col-10 rounded-end py-2 px-1 border">
+        <div class="d-flex border">
+          <div class="edit ms-2 d-flex"><img src="img/details.svg"/></div>
+          <div class="flex-grow-1 col-7">Aprender React</div>
+          <div class="ms-2">2024-11-02</div>
+          <div class="ms-2 col-1">High</div>
+          <div class="edit ms-2 d-flex"><img src="img/edit.svg"/></div>
+          <div class="delete ms-2 me-2 d-flex"><img src="img/delete.svg"/></div>
+        </div>
+      </div>
+      <button class="add rounded-circle d-flex justify-content-center align-items-center m-1" data-bs-toggle="modal" data-bs-target="#addModal"><img class="flex-grow-1 p-0 m-0" src="img/add.svg"/></button>
+    </div>
+
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modalBg modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel">Add Task</h5>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="titleTask" class="form-label">Title</label>
+                <input type="email" class="form-control" id="titleTask" placeholder='"Clean Bedroom"'>
+              </div>
+              <div class="mb-3">
+                <label for="descriptionTask" class="form-label">Description</label>
+                <textarea class="form-control" id="descriptionTask" rows="3" placeholder='"Broom the floor and make the bed"'></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="dateTask" class="form-label">Due Date</label>
+                <input type="date" class="form-control" id="dateTask">
+              </div>
+              <div class="mb-3 d-flex flex-column">
+                Priority
+                <div class="d-flex">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="radio" id="radio1" value="Low">
+                  <label class="form-check-label" for="radio1">
+                    Low
+                  </label>
+                </div>
+                <div class="form-check ms-3">
+                  <input class="form-check-input" type="radio" name="radio" id="radio2" value="Normal">
+                  <label class="form-check-label" for="radio2">
+                    Normal
+                  </label>
+                </div>
+                <div class="form-check ms-3">
+                  <input class="form-check-input" type="radio" name="radio" id="radio3" value="High">
+                  <label class="form-check-label" for="radio3">
+                    High
+                  </label>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn rounded border d-flex" data-bs-dismiss="modal"><img src="img/delete.svg"/></button>
+            <button type="button" class="btn rounded border d-flex" id="addTaskBtn"><img src="img/plus.svg"/></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
