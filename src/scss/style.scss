@@ -40,3 +40,16 @@ div {
 .modalBg{
     background-color: $background-color !important;
 }
+.descriptionDiv{
+  background-color: white;
+}
+
+.descriptionDiv > *{
+  color: $background-color;
+}
+.descriptionTitle{
+  font-weight: bold;
+}
+.all > img{
+  opacity: 0.2;
+}

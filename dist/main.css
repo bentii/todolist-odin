@@ -52,6 +52,22 @@ div {
   background-color: rgb(104, 11, 11) !important;
 }
 
+.descriptionDiv {
+  background-color: white;
+}
+
+.descriptionDiv > * {
+  color: rgb(104, 11, 11);
+}
+
+.descriptionTitle {
+  font-weight: bold;
+}
+
+.all > img {
+  opacity: 0.2;
+}
+
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
  * Copyright 2011-2023 The Bootstrap Authors
