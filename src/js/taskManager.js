@@ -35,7 +35,6 @@ if(!localStorage.getItem('tasks')){
       tasks[index] = new Task(task.title, task.description, task.dueDate, task.priority, task.id, task.tag);
         displayTask(task, 'create');
     }
-    console.log(index);
 });
 })();
 
