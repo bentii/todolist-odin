@@ -1,6 +1,8 @@
 import detailsIcon from "../img/details.svg";
 import editIcon from "../img/edit.svg";
 import deleteIcon from "../img/delete.svg";
+import {format} from "date-fns";
+import { addStorage, fetchStorage } from "./storageManager.js";
 
 class Task {
   constructor(title, description, dueDate, priority, id, tag) {
@@ -21,11 +23,20 @@ class Task {
   }
 }
 
-const tasks = {};
-(function(){
-    const task0 = new Task('Learn React', 'Learn the very basics of react', '2024-01-01','High', '1', 'today');
-    tasks[1] = task0;
-    return displayTask(task0, 'create');
+const tasks = fetchStorage();
+if(!localStorage.getItem('tasks')){
+  tasks[1] = new Task('Learn React', 'Learn the very basics of react', '2024-06-05', 'High', 1, 'today');
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+(function printTaskOnStatup(){
+  tasks.forEach(function(task, index) {
+    if (task !== null) {
+      tasks[index] = new Task(task.title, task.description, task.dueDate, task.priority, task.id, task.tag);
+        displayTask(task, 'create');
+    }
+    console.log(index);
+});
 })();
 
 function getTask() {
@@ -39,9 +50,10 @@ function getTask() {
 
 function createTask(tag) {
   const { title, desc, date, prio } = getTask();
-  const id = Object.keys(tasks).length + 1; // Gerar o próximo ID
+  const id = tasks.length; // Gerar o próximo ID
   const task = new Task(title, desc, date, prio, id, tag);
   tasks[id] = task; // Armazenar a instância de Task no objeto tasks
+  addStorage();
   return displayTask(task, "create");
 }
 
@@ -55,6 +67,7 @@ function editTask() {
     dueDate: date,
     priority: prio,
   });
+  addStorage();
   return displayTask(task, "edit");
 }
 
@@ -90,7 +103,7 @@ function displayTask(taskObj, parameter) {
     div1.appendChild(div3);
     div3.textContent = taskObj.title;
     div1.appendChild(div4);
-    div4.textContent = taskObj.dueDate;
+    div4.textContent = format(new Date(taskObj.dueDate), 'do MMM');
     div1.appendChild(div5);
     div5.textContent = taskObj.priority;
     div1.appendChild(div6);
@@ -105,12 +118,14 @@ function displayTask(taskObj, parameter) {
 function displayEditedTask(task) {
   const div = document.getElementById(task.id);
   div.querySelector(".title").textContent = task.title;
-  div.querySelector(".date").textContent = task.dueDate;
+  div.querySelector(".date").textContent = format(new Date(task.dueDate), 'do MMM');
   div.querySelector(".priority").textContent = task.priority;
 }
 
 function deleteTask(id) {
     $('#' + id).remove();
+    tasks.splice(id,1,null);
+    addStorage();
 }
 
 export { createTask, editTask, tasks, deleteTask };
